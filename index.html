@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Página Escolar</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        .calc-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+        label, input, button, select {
+            display: block;
+            margin: 5px 0;
+        }
+        input, select {
+            padding: 5px;
+            width: 95%;
+        }
+        button {
+            padding: 8px;
+            margin-top: 10px;
+        }
+        .resultado {
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+  <h1>Mi Página Personal</h1>
+  
+  <p><strong>Nombre:</strong> Maldonado Dominguez Dinkey Jason</p>
+  <p><strong>Grado y Grupo:</strong> 5AVPR</p>
+  <p><strong>Turno:</strong> Vespertino</p>
+  <p><strong>Escuela:</strong> CBTIS 111</p>
+
+  <h1>Calculadoras Escolares</h1>
+
+  <!-- Cuadrado -->
+  <div class="calc-box">
+      <h2>Área de un Cuadrado</h2>
+      <label>Lado:</label>
+      <input type="number" id="lado">
+      <button onclick="areaCuadrado()">Calcular</button>
+      <div class="resultado" id="resCuadrado"></div>
+  </div>
+
+  <!-- Círculo -->
+  <div class="calc-box">
+      <h2>Área de un Círculo</h2>
+      <label>Radio:</label>
+      <input type="number" id="radio">
+      <button onclick="areaCirculo()">Calcular</button>
+      <div class="resultado" id="resCirculo"></div>
+  </div>
+
+  <!-- Rectángulo -->
+  <div class="calc-box">
+      <h2>Área de un Rectángulo</h2>
+      <label>Base:</label>
+      <input type="number" id="baseRect">
+      <label>Altura:</label>
+      <input type="number" id="alturaRect">
+      <button onclick="areaRectangulo()">Calcular</button>
+      <div class="resultado" id="resRect"></div>
+  </div>
+
+  <!-- Trapecio -->
+  <div class="calc-box">
+      <h2>Área de un Trapecio</h2>
+      <label>Base mayor:</label>
+      <input type="number" id="baseMayor">
+      <label>Base menor:</label>
+      <input type="number" id="baseMenor">
+      <label>Altura:</label>
+      <input type="number" id="alturaTrap">
+      <button onclick="areaTrapecio()">Calcular</button>
+      <div class="resultado" id="resTrap"></div>
+  </div>
+
+  <!-- Triángulo -->
+  <div class="calc-box">
+      <h2>Área de un Triángulo</h2>
+      <label>Base:</label>
+      <input type="number" id="baseTri">
+      <label>Altura:</label>
+      <input type="number" id="alturaTri">
+      <button onclick="areaTriangulo()">Calcular</button>
+      <div class="resultado" id="resTri"></div>
+  </div>
+
+  <!-- Rombo -->
+  <div class="calc-box">
+      <h2>Área de un Rombo</h2>
+      <label>Diagonal mayor:</label>
+      <input type="number" id="diagMayor">
+      <label>Diagonal menor:</label>
+      <input type="number" id="diagMenor">
+      <button onclick="areaRombo()">Calcular</button>
+      <div class="resultado" id="resRombo"></div>
+  </div>
+
+  <!-- Conversor de monedas -->
+  <div class="calc-box">
+      <h2>Conversor de Monedas</h2>
+      <label>Cantidad:</label>
+      <input type="number" id="cantidadMoneda">
+
+      <label>Conversión:</label>
+      <select id="conversion">
+          <option value="mxn-usd">Pesos → Dólares</option>
+          <option value="usd-mxn">Dólares → Pesos</option>
+          <option value="usd-eur">Dólares → Euros</option>
+          <option value="eur-usd">Euros → Dólares</option>
+          <option value="mxn-eur">Pesos → Euros</option>
+          <option value="eur-mxn">Euros → Pesos</option>
+      </select>
+
+      <button onclick="convertirMoneda()">Convertir</button>
+      <div class="resultado" id="resMoneda"></div>
+  </div>
+
+  <script>
+      // Funciones de áreas
+      function areaCuadrado() {
+          let lado = document.getElementById("lado").value;
+          document.getElementById("resCuadrado").innerText = "Área = " + (lado * lado);
+      }
+
+      function areaCirculo() {
+          let radio = document.getElementById("radio").value;
+          document.getElementById("resCirculo").innerText = "Área = " + (Math.PI * radio * radio).toFixed(2);
+      }
+
+      function areaRectangulo() {
+          let base = document.getElementById("baseRect").value;
+          let altura = document.getElementById("alturaRect").value;
+          document.getElementById("resRect").innerText = "Área = " + (base * altura);
+      }
+
+      function areaTrapecio() {
+          let B = parseFloat(document.getElementById("baseMayor").value);
+          let b = parseFloat(document.getElementById("baseMenor").value);
+          let h = parseFloat(document.getElementById("alturaTrap").value);
+          document.getElementById("resTrap").innerText = "Área = " + (((B + b) * h) / 2);
+      }
+
+      function areaTriangulo() {
+          let base = document.getElementById("baseTri").value;
+          let altura = document.getElementById("alturaTri").value;
+          document.getElementById("resTri").innerText = "Área = " + ((base * altura) / 2);
+      }
+
+      function areaRombo() {
+          let D = document.getElementById("diagMayor").value;
+          let d = document.getElementById("diagMenor").value;
+          document.getElementById("resRombo").innerText = "Área = " + ((D * d) / 2);
+      }
+
+      // Conversor de monedas
+      function convertirMoneda() {
+          let cantidad = parseFloat(document.getElementById("cantidadMoneda").value);
+          let tipo = document.getElementById("conversion").value;
+          let tasas = {
+              "mxn-usd": 0.055,
+              "usd-mxn": 18.2,
+              "usd-eur": 0.93,
+              "eur-usd": 1.07,
+              "mxn-eur": 0.051,
+              "eur-mxn": 19.5
+          };
+          let resultado = cantidad * tasas[tipo];
+          document.getElementById("resMoneda").innerText = "Resultado = " + resultado.toFixed(2);
+      }
+  </script>
+</body>
+</html>
+
